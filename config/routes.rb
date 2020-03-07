@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 	root to: "home#top"
 	get "about" => "home#about"
-	get "home" => "home#home"
-	get "stores" => "stores#index"
+	get "shop" => "home#shop"
+	get "store" => "home#store"
+	get "menus" => "home#menus"
 	resources :notices, only: [:index,:show]
 	resources :reservations, only: [:show,:create,:new]
 	get "/reservations/confirm" => "reservations#confirm"
@@ -12,6 +13,6 @@ Rails.application.routes.draw do
 	namespace :admin do
 	  resources :notices, only: [:index,:create,:edit,:update,:destroy,:new]
 	  resources :reservations
-	  get "about"  => "home#about"
+	  root to: "home#about"
 	end
 end
