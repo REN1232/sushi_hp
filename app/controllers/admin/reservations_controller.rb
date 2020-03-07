@@ -1,15 +1,24 @@
-class ReservationsController < ApplicationController
+class Admin::ReservationsController < ApplicationController
 
-	def new
+	def index
 	end
 
-	def show
+	def new
 	end
 
 	def create
 	end
 
-	def confirm
+	def show
+	end
+
+	def edit
+	end
+
+	def update
+	end
+
+	def destroy
 	end
 
 	private
