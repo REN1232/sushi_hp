@@ -1,0 +1,61 @@
+<div class= "container">
+  	<h2 class = text-center>築地寿司の予約</h2>
+	<div class = "row">
+  		<div class = "col-xs-1"></div>
+    	<div class = "col-xs-6">
+      		<div id="calendar"></div>
+      		<h4>＊<span style = "color:red;">赤色</span>は定休日になります</h4>
+    	</div>
+  		<div class = "col-xs-4">
+  			<%= form_for(@reservation, url:reservations_path) do |f| %>
+  				<h4>予約日<span class="label label-warning pull-right">必須</span></h4>
+  				<%= f.text_field :reservation_day, id: "reservation_day", readonly: true,placeholder: 'カレンダーの日付をタップしてください',style: "width:100%" %>
+
+  				<h4>予約時間<span class="label label-warning pull-right">必須</span></h4>
+	  			<%= f.select :reservation_time, [["11:00", "11:00"], ["12:00","12:00"], ["13:00","13:00"], ["14:00","14:00"], ["17:00", "17:00"],["18:00","18:00"],["19:00","19:00"],["20:00","20:00"],["21:00","21:00"]],class:"form-control" %>
+
+	  			<h4>予約人数<span class="label label-warning pull-right">必須</span></h4>
+	  			<%= f.select :people, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8], ["9", 9], ["10", 10]] ,class:"form-control" %>
+
+	  			<h4>お名前<span class="label label-warning pull-right">必須</span></h4>
+	  			<%= f.text_field :customer_name,style: "width:100%"%>
+
+	  			<h4>電話番号<span class="label label-warning pull-right">必須</span></h4>
+	  			<%= f.text_field :phone_number,style: "width:100%"%>
+
+	  			<h4>メールアドレス<span class="label label-warning pull-right">必須</span></h4>
+	  			<%= f.text_field :email,style: "width:100%"%>
+
+	  			<h4>ご要望</h4>
+	  			<%= f.text_area :request,style: "width:100%",rows:"5"%>
+
+	  			<%= f.submit "予約状況を確認します", class: "btn btn-primary" %>
+
+  			<% end %>
+  			<div>
+		      <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
+		    </div>
+  		</div>
+  		<div class = "col-xs-1"></div>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	$('#calendar').fullCalendar({
+	  	dayClick: function(date, jsEvent, view) {
+		    $(this).on('click', function(){
+	    	    if($(this).hasClass('fc-sun')){
+   				 }else{
+		    	//クリックした日付が取れる
+	    		$('#reservation_day').val(date.format());
+	    		//選択状態だった場合クラスを削除する
+		        $('td').removeClass('selected-date');
+		        $('td').removeClass('fc-today');
+		        //クリックされたtdに選択状態クラスを追加(addClass)する
+		        $(this).addClass('selected-date');
+		    	}
+		    });
+	  	}
+	});
+});
+</script>
