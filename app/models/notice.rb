@@ -1,6 +1,6 @@
 class Notice < ApplicationRecord
 
-	attachment :image_id
+	attachment :image
 	validates :title, presence: true
 	validates :content, presence: true
 end

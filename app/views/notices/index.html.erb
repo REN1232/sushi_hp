@@ -1,0 +1,39 @@
+<div class= "container">
+    <div class ="row">
+      <h2 class = text-center>お知らせ</h2>
+    </div>
+    <div class = "row">
+      <div class = "col-xs-2"></div>
+        <div class = "col-xs-8">
+          <table class ="table">
+            <thead>
+              <tr>
+                <th>写真</th>
+                <th>タイトル</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @notices.each do |notice| %>
+              <tr>
+                <td style="width: 30%"><span><%= attachment_image_tag notice, :image, :fill,150,150, fallback: "no_image.jpg", size:'200x200' %></span></td>
+                <td>
+                  <%= link_to notice_path(notice.id) do %>
+                    <span style="font-size: 30px"><%= notice.title%></span>
+                  <% end %>
+                  <p class = "pull-right" style="font-size: 20px"><%= notice.created_at.strftime("%Y/%m/%d") %></p>
+                  <br>
+                  <p style="width:500px;word-wrap:break-word;font-size: 20px">
+                    <%= notice.content.truncate(200) %>
+                  </p>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div  class = "text-center">
+            <%= paginate @notices %>
+          </div>
+        </div>
+      <div class = "col-xs-2"></div>
+    </div>
+  </div>

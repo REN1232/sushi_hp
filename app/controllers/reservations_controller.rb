@@ -20,15 +20,15 @@ class ReservationsController < ApplicationController
 			if @reservation.save
 				redirect_to reservation_path(@reservation.id)
 			else
-				flash.now[:notice] = "予約情報が確認できません！"
+				flash.now[:alert] = "予約情報が確認できません！"
 				render 'new'
 			end
 		else
 			if 10 - a < 1
-				flash.now[:notice] = "ご希望の日時ですとご予約は満席となります！"
+				flash.now[:alert] = "ご希望の日時ですとご予約は満席となります！"
 				render 'new'
 			else
-				flash.now[:notice] = "ご希望の日時ですと予約可能人数は#{10-a}名までとなります！"
+				flash.now[:alert] = "ご希望の日時ですと予約可能人数は#{10-a}名までとなります！"
 				render 'new'
 			end
 		end

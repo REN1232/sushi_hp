@@ -4,43 +4,47 @@
     <title>SushiHp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="navbar ">
+    <header class="navbar">
       <div class="container">
-        <nav class="nav navbar-nav">
-          <% if admin_signed_in? %>
-            <%= link_to admin_root_path do %>
-              <%= image_tag 'sushi.png', size: "200x70" %>
-            <% end %>
-          <% else %>
-            <%= link_to root_path do %>
-              <%= image_tag 'sushi.png', size: "200x70" %>
-            <% end %>
-          <% end %>
-        </nav>
-      </div>
-      <div class="container">
-        <ul class="nav navbar-nav">
-          <!--if文でサインインとアウト時の表示を変更-->
-          <% if admin_signed_in? %>
-            <li><%= link_to ' サイトの使い方', admin_root_path%></li>
-            <li><%= link_to ' お知らせ', admin_notices_path%></li>
-            <li><%= link_to ' 予約', admin_reservations_path%></li>
-            <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete%></li>
-          <% else %>
-            <li><%= link_to ' サイトの使い方', about_path%></li>
-            <li><%= link_to ' お知らせ', notices_path%></li>
-            <li><%= link_to ' 店舗紹介', shop_path%></li>
-            <li><%= link_to ' お品書き', menus_path%></li>
-            <li><%= link_to ' 予約', new_reservation_path%></li>
-            <li><%= link_to ' 店舗案内', store_path%></li>
-          <% end %>
-        </ul>
+        <div class= "flex">
+          <i class="flex-item"></i>
+            <div class="nav-logo">
+              <% if admin_signed_in? %>
+                <%= link_to admin_root_path do %>
+                  <%= image_tag 'sushi.png', size: "200x70" %>
+                <% end %>
+              <% else %>
+                <%= link_to root_path do %>
+                  <%= image_tag 'sushi.png', size: "200x70" %>
+                <% end %>
+              <% end %>
+            </div>
+              <div id="nav-drawer">
+                <input id="nav-input" type="checkbox" class="nav-unshown">
+                <label id="nav-open" for="nav-input"><span></span></label>
+                <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+              <div id="nav-content">
+                <% if admin_signed_in? %>
+                  <p class = "nav-item" style = "padding-top: 20px"><a href="admin_root_path" id= "nav-font">サイトの使い方</a></p>
+                  <p class = "nav-item"><a href="admin_notices_path" id= "nav-font">お知らせ</a></p>
+                  <p class = "nav-item"><a href="admin_reservations_path" id= "nav-font">予約</a></p>
+                  <p class = "nav-item"><a href="destroy_admin_session_path" id= "nav-font"  method= :delete>ログアウト</a></p>
+                <% else %>
+                  <p class = "nav-item"><a href="about_path" id= "nav-font">サイトの使い方</a></p>
+                  <p class = "nav-item"><a href="notices_path" id= "nav-font">お知らせ</a></p>
+                  <p class = "nav-item"><a href="shop_path" id= "nav-font">店舗紹介</a></p>
+                  <p class = "nav-item"><a href="menus_path" id= "nav-font">お品書き</a></p>
+                  <p class = "nav-item"><a href="new_reservation_path" id= "nav-font">予約</p>
+                  <p class = "nav-item"><a href="store_path" id= "nav-font">店舗案内</a></p>
+                <% end %>
+              </div>
+            </div>
+        </div>
       </div>
     </header>
     <%= yield %>

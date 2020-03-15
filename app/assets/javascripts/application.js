@@ -16,3 +16,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/lang/ja
+

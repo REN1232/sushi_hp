@@ -28,7 +28,7 @@
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to admin_notice_path(notice.id), method: :delete do %>
+                  <%= link_to admin_notice_path(notice.id), method: :delete, data: {confirm: '削除しますか？'} do %>
                     <button class="btn btn-danger">削除</button>
                   <% end %>
                 </td>

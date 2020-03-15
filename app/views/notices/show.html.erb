@@ -1,0 +1,19 @@
+<div class= "container">
+  <div class ="row">
+    <h2 class = text-center>お知らせ詳細</h2>
+    <div class = "col-xs-2"></div>
+      <div class = "col-xs-8">
+        <div class = "col-xs-4">
+          <h4>画像</h4>
+          <span><%= attachment_image_tag @notice, :image, :fill,150,150, fallback: "no_image.jpg", size:'200x200' %></span>
+        </div>
+        <div class = "col-xs-8">
+          <h4>タイトル</h4>
+          <h4><%= @notice.title %></h4>
+          <h4>内容</h4>
+          <h4 style="width:500px;word-wrap:break-word;"><%= @notice.content %></h4>
+        </div>
+      </div>
+    <div class = "col-xs-2"></div>
+  </div>
+</div>
