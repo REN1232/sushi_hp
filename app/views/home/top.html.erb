@@ -1,0 +1,122 @@
+<div class="top-title">
+	<div class="theTarget">
+		<%= image_tag 'top-image.jpg'%>
+		<%= image_tag 'top-image2.jpg'%>
+		<%= image_tag 'top-image3.jpg'%>
+		<%= image_tag 'top-image4.jpg'%>
+		<%= image_tag 'top-image5.jpg'%>
+	</div>
+</div>
+<div class="container background-image">
+	<div class="row">
+		<div class="col-xs-4" style="padding: 0; padding-top: 30px;">
+			<%= link_to menus_path(anchor:"link1"),class: 'top-menu-links' do %>
+				<div class="top-menus-image1">
+					<p class="top-menus-font">おまかせコース</p>
+				</div>
+			<% end %>
+			<%= link_to menus_path(anchor:"link3"),class: 'top-menu-links' do %>
+				<div class="top-menus-image2">
+					<p class="top-menus-font">一品料理</p>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-xs-4" style="padding: 0; padding-top: 30px;">
+			<%= link_to menus_path(anchor:"link2"),class: 'top-menu-links' do %>
+				<div class="top-menus-image3">
+					<p class="top-menus-font">握り寿司　巻物</p>
+				</div>
+			<% end %>
+			<%= link_to menus_path(anchor:"link4"),class: 'top-menu-links' do %>
+				<div class="top-menus-image4">
+					<p class="top-menus-font">飲み物</p>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-xs-4">
+			<h1 class="top-notice-font"><span class= "border">お知らせ</span></h1>
+			<div class="top-notices-background">
+				<table class="table table-bordered">
+		            <tbody>
+		              <% @notices.each do |notice| %>
+		              <tr>
+		                <td>
+		                  <p style="font-size: 20px"><%= notice.created_at.strftime("%Y/%m/%d") %>
+		                  <%= link_to notice_path(notice.id) do %>
+		                    <span class="top-notice-link"><%= "◆"+ notice.title%></span>
+		                  <% end %>
+		                  </p>
+		                </td>
+		              </tr>
+		              <% end %>
+		            </tbody>
+		        </table>
+		        <%= link_to notices_path do %>
+		        	<h4 class="top-notice-link2">お知らせ一覧はこちらから</h4>
+		        <% end %>
+		    </div>
+		</div>
+	</div>
+	<div class="row" style = "padding-top: 30px;">
+		<div class="top-store_title"></div>
+		<h1 class="top-store-font"><span class="border">店舗案内</span></h1>
+		<div class="col-xs-6"style = "padding: 20px 0px;">
+			<p class="top-store-font2"><span class="border">店名</span></p>
+			<p class="top-store-font2">築地寿司</p>
+			<p class="top-store-font2"><span class="border">住所</span></p>
+			<p class="top-store-font2">東京都渋谷区神南１丁目１９−１１<br>パークウェースクエア24階</p>
+			<p class="top-store-font2"><span class="border">電話番号</span></p>
+			<p class="top-store-font2">000-0000-0000</p>
+		</div>
+		<div class="col-xs-6" style = "padding: 20px 0px;">
+			<div id="map" style="width:80%; height:250px;"></div>
+		</div>
+	</div>
+	<div class="row" style="text-align: center;" >
+		<span id="back">
+		    <a href="#">
+		      	<%= image_tag 'arrow.png'%>
+		    </a>
+		</span>
+	</div>
+</div>
+
+<script>
+    function initMap() {
+    	// 住所を指定する
+	    var opts = {
+	        zoom: 15,
+	        center: new google.maps.LatLng(35.662804,139.699474)
+      	};
+      	// 地図を表示する
+      	var map = new google.maps.Map(document.getElementById("map"), opts);
+      	// マーカーの住所を指定する
+      	var latlng = new google.maps.LatLng(35.662804,139.699474);
+      	// マーカーを置く
+		new google.maps.Marker({
+		  position: latlng,
+		  map: map
+		});
+    }
+</script>
+
+<script type="text/javascript">
+  $(function(){
+    $('.top-menus-font').mouseover(function(){
+        $(this).addClass('top-menus-image5');
+    });
+    $('.top-menus-font').mouseout(function(){
+         $(this).removeClass('top-menus-image5');
+    });
+    $('#back a').on('click',function(){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+      return false;
+  });
+});
+</script>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['KEY'] %>&callback=initMap" async defer></script>
