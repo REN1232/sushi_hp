@@ -1,16 +1,17 @@
-<div class= "container">
-    <div class ="row">
-      <h2 class = text-center>お知らせ一覧
-      <%= link_to new_admin_notice_path do %>
-        <button class="btn btn-primary">投稿する</button>
-      <% end %></h2>
+<div class="container-fluid background-image2">
+    <div class="row">
+      <h2 style="text-align: center;"><span class ="border">お知らせ一覧
+      </span></h2>
     </div>
-    <div class = "row">
-      <div class = "col-xs-2"></div>
-        <div class = "col-xs-8">
-          <table class ="table">
+    <div class="row">
+      <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+          <%= link_to new_admin_notice_path do %>
+            <button class="btn btn-primary pull-right">投稿する</button>
+          <% end %>
+          <table class="table notice-table-border2" style="padding-top: 10px;">
             <thead>
-              <tr>
+              <tr class="active">
                 <th>投稿日時</th>
                 <th>タイトル</th>
                 <th></th>
@@ -20,8 +21,8 @@
             <tbody>
               <% @notices.each do |notice| %>
               <tr>
-                <td><%= notice.created_at.strftime("%Y/%m/%d") %></td>
-                <td><%= notice.title %></td>
+                <td><h4><%= notice.created_at.strftime("%Y/%m/%d") %></h4></td>
+                <td><h4><%= notice.title.truncate(20) %></h4></td>
                 <td>
                   <%= link_to admin_notice_path(notice.id) do %>
                     <button class="btn btn-success">詳細</button>
@@ -36,7 +37,10 @@
               <% end %>
             </tbody>
           </table>
+          <div  class="kaminari">
+            <%= paginate @notices %>
+          </div>
         </div>
-      <div class = "col-xs-2"></div>
+      <div class="col-xs-3"></div>
     </div>
   </div>

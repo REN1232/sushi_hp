@@ -1,8 +1,8 @@
-<div class= "container">
-  <div class ="row">
-    <h2 class = text-center>お知らせ編集</h2>
-    <div class = "col-xs-2"></div>
-      <div class = "col-xs-8">
+<div class="container-fluid background-image2">
+  <div class="row">
+    <h2 class="notice-font3"><span class="border">お知らせ編集</span></h2>
+    <div class="col-xs-3"></div>
+      <div class="col-xs-6"style="padding-bottom: 20px;">
       <%= form_for(@notice, url:admin_notice_path(@notice.id)) do |f| %>
         <% if @notice.errors.any? %>
           <div id="error_explanation">
@@ -14,50 +14,57 @@
             </ul>
           </div>
         <% end %>
-        <div class = "col-xs-4">
+        <div class="col-xs-5">
           <div class="field row">
-            <h4>画像</h4>
+            <h4>　画像</h4>
             <% if @notice.image.present? %>
               <%= image_tag @notice.image, id: :img_prev, size:'200x200' %>
             <% else %>
               <%= image_tag "no_image.jpg", id: :img_prev, size:'200x200' %>
             <% end %>
-            <!-- 投稿画像を選択した時に、投稿画像を読み込み＆反映 -->
-            <script type="text/javascript">
-              $(function(){
-                function readURL(input){
-                  if(input.files && input.files[0]){
-                    var reader = new FileReader();
-                    reader.onload = function(e){
-                      $('#img_prev').attr('src',e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                  }
-                }
-                $("#notice_img").change(function(){
-                  readURL(this);
-                });
-              });
-            </script>
             <%= f.attachment_field :image, id: :notice_img %>
           </div>
         </div>
-        <div class = "col-xs-8">
+        <div class="col-xs-7">
           <div class="field row">
             <h4>タイトル</h4>
-            <%= f.text_field :title,style: "width:90%; color: black;" %>
+            <%= f.text_field :title,style: "width:100%; color: black;" %>
           </div>
-
           <div class="field row">
-            <h4>内容</h4>
-            <%= f.text_area :content,style: "width:90%; color: black;",rows:"10" %>
+            <h4>　内容</h4>
+            <%= f.text_area :content,style: "width:100%; color: black;",rows:"10" %>
           </div>
-          <div class="actions row">
-            <%= f.submit "編集完了", class: "btn btn-warning" %>
+          <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+              <%= f.submit "編集完了", class: "btn btn-warning" %>
+            </div>
+            <div class="btn-group">
+              <%= link_to admin_notice_path(@notice.id) do %>
+                <button class="btn btn-success">詳細に戻る</button>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
-    </div>
-    <div class = "col-xs-2"></div>
+      </div>
+    <div class="col-xs-3"></div>
   </div>
 </div>
+
+<!-- 投稿画像を選択した時に、投稿画像を読み込み＆反映 -->
+<script type="text/javascript">
+  $(function(){
+    function readURL(input){
+      if(input.files && input.files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e){
+          $('#img_prev').attr('src',e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    $("#notice_img").change(function(){
+      readURL(this);
+    });
+  });
+</script>
