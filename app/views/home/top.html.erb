@@ -1,4 +1,5 @@
 <div class="top-title">
+	<!-- スキッパー -->
 	<div class="theTarget">
 		<%= image_tag 'top-image.jpg'%>
 		<%= image_tag 'top-image2.jpg'%>
@@ -34,16 +35,16 @@
 			<% end %>
 		</div>
 		<div class="col-xs-4">
-			<h1 class="top-notice-font"><span class= "border">お知らせ</span></h1>
+			<h2 class="top-notice-font"><span class= "border">お知らせ</span></h2>
 			<div class="top-notices-background">
 				<table class="table table-bordered">
 		            <tbody>
 		              <% @notices.each do |notice| %>
 		              <tr>
 		                <td>
-		                  <p style="font-size: 20px"><%= notice.created_at.strftime("%Y/%m/%d") %>
-		                  <%= link_to notice_path(notice.id) do %>
-		                    <span class="top-notice-link"><%= "◆"+ notice.title%></span>
+		                  <p class="top-notice-font2"><%= notice.created_at.strftime("%Y/%m/%d") %>
+		                  <%= link_to notice_path(notice.id),class: 'top-notice-link' do %>
+		                    <%= "◆"+ notice.title%>
 		                  <% end %>
 		                  </p>
 		                </td>
@@ -51,15 +52,15 @@
 		              <% end %>
 		            </tbody>
 		        </table>
-		        <%= link_to notices_path do %>
-		        	<h4 class="top-notice-link2">お知らせ一覧はこちらから</h4>
+		        <%= link_to notices_path,class: "top-notice-link2 pull-right" do %>
+		        	お知らせ一覧はこちらから
 		        <% end %>
 		    </div>
 		</div>
 	</div>
 	<div class="row" style = "padding-top: 30px;">
 		<div class="top-store_title"></div>
-		<h1 class="top-store-font"><span class="border">店舗案内</span></h1>
+		<h2 class="top-store-font"><span class="border">店舗案内</span></h2>
 		<div class="col-xs-6"style = "padding: 20px 0px;">
 			<p class="top-store-font2"><span class="border">店名</span></p>
 			<p class="top-store-font2">築地寿司</p>
@@ -80,7 +81,25 @@
 		</span>
 	</div>
 </div>
+<!-- メニュー画像とトップに戻る -->
+<script type="text/javascript">
+  $(function(){
+    $('.top-menus-font').mouseover(function(){
+        $(this).addClass('top-menus-image5');
+    });
+    $('.top-menus-font').mouseout(function(){
+         $(this).removeClass('top-menus-image5');
+    });
 
+    $('#back a').on('click',function(){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+      return false;
+  });
+});
+</script>
+<!-- 地図 -->
 <script>
     function initMap() {
     	// 住所を指定する
@@ -99,24 +118,5 @@
 		});
     }
 </script>
-
-<script type="text/javascript">
-  $(function(){
-    $('.top-menus-font').mouseover(function(){
-        $(this).addClass('top-menus-image5');
-    });
-    $('.top-menus-font').mouseout(function(){
-         $(this).removeClass('top-menus-image5');
-    });
-    $('#back a').on('click',function(){
-    $('body, html').animate({
-      scrollTop:0
-    }, 800);
-      return false;
-  });
-});
-</script>
-
-
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['KEY'] %>&callback=initMap" async defer></script>

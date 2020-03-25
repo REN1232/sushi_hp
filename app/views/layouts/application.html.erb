@@ -4,8 +4,11 @@
     <title>SushiHp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
 
   <body>
@@ -30,17 +33,17 @@
                 <label class="nav-unshown" id="nav-close" for="nav-input"></label>
               <div id="nav-content">
                 <% if admin_signed_in? %>
-                  <p class = "nav-item" style = "padding-top: 20px"><a href="admin_root_path" id= "nav-font">サイトの使い方</a></p>
-                  <p class = "nav-item"><a href="admin_notices_path" id= "nav-font">お知らせ</a></p>
-                  <p class = "nav-item"><a href="admin_reservations_path" id= "nav-font">予約</a></p>
-                  <p class = "nav-item"><a href="destroy_admin_session_path" id= "nav-font"  method= :delete>ログアウト</a></p>
+                  <p class = "nav-item" style = "padding-top: 20px"><a href="/admin" class= "nav-font">サイトの使い方</a></p>
+                  <p class = "nav-item"><a href="/admin/notices" class= "nav-font" >お知らせ</a></p>
+                  <p class = "nav-item"><a href="/admin/reservations" class= "nav-font">予約</a></p>
+                  <p class = "nav-item"><a href="/logout" class= "nav-font" data-method="delete">ログアウト</a></p>
                 <% else %>
-                  <p class = "nav-item"><a href="about_path" id= "nav-font">サイトの使い方</a></p>
-                  <p class = "nav-item"><a href="notices_path" id= "nav-font">お知らせ</a></p>
-                  <p class = "nav-item"><a href="shop_path" id= "nav-font">店舗紹介</a></p>
-                  <p class = "nav-item"><a href="menus_path" id= "nav-font">お品書き</a></p>
-                  <p class = "nav-item"><a href="new_reservation_path" id= "nav-font">予約</p>
-                  <p class = "nav-item"><a href="store_path" id= "nav-font">店舗案内</a></p>
+                  <p class = "nav-item"><a href="/about" class= "nav-font">サイトの使い方</a></p>
+                  <p class = "nav-item"><a href="/kodawari" class= "nav-font">こだわり</a></p>
+                  <p class = "nav-item"><a href="/menus" class= "nav-font">お品書き</a></p>
+                  <p class = "nav-item"><a href="/reservations/new" class= "nav-font">予約</p>
+                  <p class = "nav-item"><a href="/notices" class= "nav-font">お知らせ</a></p>
+                  <p class = "nav-item"><a href="/store" class= "nav-font">店舗案内</a></p>
                 <% end %>
               </div>
             </div>
@@ -48,5 +51,26 @@
       </div>
     </header>
     <%= yield %>
+    <footer>
+      <div class = "footer">
+        <%= image_tag 'sushi.png', size: "200x75" ,style:"padding-top:20px" %>
+        <p class= "footer-font">東京都渋谷区神南１丁目１９−１１ パークウェースクエア24階</p>
+        <p class= "footer-font">000-0000-0000</p>
+      </div>
+    </footer>
   </body>
 </html>
+
+<!-- ハンバーガーメニュー -->
+<script type="text/javascript">
+  $(function(){
+    $('.nav-font').mouseover(function(){
+        $(this).css({'color': '#ffffff'});
+        $(this).css({'font-size': '20px'});
+        $(this).css({'text-decoration': 'none'});
+    });
+    $('.nav-font').mouseout(function(){
+        $(this).css({'font-size': '15px'});
+    });
+});
+</script>

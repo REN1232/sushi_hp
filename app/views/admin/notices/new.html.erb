@@ -6,12 +6,14 @@
       <%= form_for(@notice, url:admin_notices_path) do |f| %>
         <% if @notice.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(notice.errors.count, "error") %> prohibited this notice from being saved:</h2>
-            <ul>
-              <% notice.errors.full_messages.each do |message| %>
+            <font color = "red">
+              <h3>入力した内容に<%= @notice.errors.count %>件のエラーがあります</h3>
+              <ul>
+              <% @notice.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
-            </ul>
+              </ul>
+            </font>
           </div>
         <% end %>
         <div class="col-xs-5">

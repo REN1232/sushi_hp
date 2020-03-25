@@ -1,0 +1,95 @@
+<%= form_for(@reservation, url: {action: 'confirm'}) do |f| %>
+	<% if @reservation.errors.any? %>
+      <div id="error_explanation">
+        <font color = "red">
+          <h3>入力した内容に<%= @reservation.errors.count %>件のエラーがあります</h3>
+          <ul>
+          <% @reservation.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </font>
+      </div>
+    <% end %>
+    <div>
+      	<h4 id="alert" style="color:red;"><%= alert %></h4>
+    </div>
+	<h4>予約日<span class="label label-warning pull-right">必須</span></h4>
+
+	<%= f.text_field :reservation_day,id: "reservation_day", readonly: true,placeholder: 'カレンダーの日付をタップしてください',style: "width:100%;" %>
+
+	<h4>予約時間<span class="label label-warning pull-right">必須</span></h4>
+
+	<h5>*日時と人数で予約可能時間帯が絞られます。</h5>
+
+	<%= f.select :reservation_time,@reservation_times,id: "reservation_time" %>
+
+	<h4>予約人数<span class="label label-warning pull-right">必須</span></h4>
+
+	<h5>*日時と時間帯で予約可能人数が絞られます。</h5>
+
+	<%= f.select :people,@peoples, id: "people" %>
+
+	<h4>名前<span class="label label-warning pull-right">必須</span></h4>
+	<%= f.text_field :customer_name,style: "width:100%"%>
+
+	<h4>電話番号<span class="label label-warning pull-right">必須</span></h4>
+	<%= f.text_field :phone_number,style: "width:100%"%>
+
+	<h4>メールアドレス<span class="label label-warning pull-right">必須</span></h4>
+	<%= f.text_field :email,style: "width:100%"%>
+
+	<h4>ご要望</h4>
+	<%= f.text_area :request,style: "width:100%",rows:"5"%>
+
+	<%= f.submit "予約状況を確認します", class: "btn btn-primary" %>
+<% end %>
+
+<!-- 予約機能入力入力欄 -->
+<script type="text/javascript">
+// 日付
+$('#reservation_reservation_time').on('click', function() {
+	$('#reservation_people').on('click', function() {
+  		var input_day = $("#reservation_day").val();
+  		var input_time = $("#reservation_reservation_time").val();
+  		console.log(input_day, input_time)
+  		$.ajax({
+	    url: "/ajax",
+	    type: "GET",
+	    data:{
+	    	reservation_day: input_day,
+	    	reservation_time: input_time,
+	    	}
+	    });
+	});
+});
+// 時間
+$('#reservation_people').on('click', function() {
+$('#reservation_reservation_time').on('click', function() {
+		var input_day = $("#reservation_day").val();
+		var input_people = $("#reservation_people").val();
+		console.log(input_day, input_people)
+		$.ajax({
+	    url: "/ajax",
+	    type: "GET",
+	    data:{
+	    	reservation_day: input_day,
+	    	people: input_people,
+	    	}
+	    });
+    });
+});
+// 人数
+$('#calendar').on('click', function() {
+	var input_day = $("#reservation_day").val();
+	console.log(input_day)
+	$.ajax({
+	    url: "/ajax",
+	    type: "GET",
+	    data:{
+	    	reservation_day: input_day,
+	    	}
+	    });
+});
+</script>
+

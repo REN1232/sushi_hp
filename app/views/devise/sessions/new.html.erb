@@ -1,29 +1,33 @@
-<h2>Log in</h2>
+<div class="container-fluid background-image3">
+  <div class="row">
+    <div style="text-align: center;padding-top: 50px;">
+      <h3>ログイン</h3>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field logn_in-font">
+          <%= f.label "Eメール" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",:size => "30"%>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="field logn_in-font">
+          <%= f.label "パスワード" %><br />
+          <%= f.password_field :password, autocomplete: "current-password",:size => "30" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="field logn_in-font">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="actions logn_in-font">
+          <%= f.submit "ログイン",class:"btn btn-primary",:size => "30" %>
+        </div>
+      <% end %>
+      <div class="logn_in-font">
+        <%= link_to 'ゲストログイン（閲覧用）', admins_guest_sign_in_path, method: :post,class:"btn btn-warning" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= link_to 'ゲストログイン（閲覧用）', admins_guest_sign_in_path, method: :post %>
-
-<%= render "devise/shared/links" %>
+</div>
 

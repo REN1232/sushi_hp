@@ -1,0 +1,40 @@
+<div class="container-fluid background-image2">
+  	<h2 class="reservation-title"><span class ="border">築地寿司の予約</span></h2>
+	<div class="row">
+  		<div class="col-xs-2"></div>
+    	<div class="col-xs-5">
+      		<div id="calendar"></div>
+      		<h4>＊<span style ="color:red;">赤色</span>は定休日になります</h4>
+    	</div>
+  		<div class="col-xs-3">
+  			<div class="select_reservation">
+				<%= render partial: "admin/reservations/select_admin_reservation",reservation_people:@peoples,reservation:@reservation,reservation_reservation_time:@reservation_times %>
+			</div>
+  		</div>
+  		<div class="col-xs-2"></div>
+	</div>
+</div>
+<!-- カレンダー機能 -->
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	$('#calendar').fullCalendar({
+	  	dayClick: function(date, jsEvent, view) {
+		    $(this).on('click', function(){
+	    	    if($(this).hasClass('fc-past')){
+   				 }else{
+	    	    if($(this).hasClass('fc-sun')){
+   				 }else{
+		    	//クリックした日付が取れる
+	    		$('#reservation_day').val(date.format());
+	    		//選択状態だった場合クラスを削除する
+		        $('td').removeClass('selected-date');
+		        $('td').removeClass('fc-today');
+		        //クリックされたtdに選択状態クラスを追加(addClass)する
+		        $(this).addClass('selected-date');
+		    	}
+		    	}
+		    });
+	  	}
+	});
+});
+</script>
