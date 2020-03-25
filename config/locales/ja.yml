@@ -6,3 +6,19 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
+ja:
+  activerecord:
+    models:
+    attributes:
+      reservation:
+        customer_name: 名前
+        people: 予約人数
+        reservation_time: 予約時間
+        reservation_day: 予約日時
+        phone_number: 電話番号
+        email: メールアドレス
+        request: ご要望
+      notice:
+        image: 画像
+        title: タイトル
+        content: 内容
