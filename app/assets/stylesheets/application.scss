@@ -35,12 +35,15 @@
 body {
   background-image: url("background.jpg");
   background-size: cover;
-  color: #ffffff;
   font-family: heisei-mincho-std, Noto Serif JP,sans-serif;
 }
 
 .background-image{
   background-image: url("background2.jpg");
+}
+
+.background-image2{
+  background-image: url("background4.jpg");
 }
 
 .nav-list {
@@ -49,44 +52,44 @@ body {
 }
 
 button, input, optgroup, select, textarea {
-    color: black;
-    font: inherit;
-    margin: 0;
+  color: black;
+  font: inherit;
+  margin: 0;
 }
+
+/* kaminari */
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+  background-color: transparent;/*背景色を打ち消す*/
+}
+
+.pagination>li>a:hover{
+  border-radius: 15px; /*角を丸くする*/
+  color: #696969;   /*文字の色を変える*/
+  background-color: white;
+}
+
+.pagination > .active > a{
+  color: #696969;   /*文字の色を変える*/
+  background-color: transparent;/*背景色を打ち消す*/
+}
+
+.pagination > .active > a:hover{
+  border-radius: 15px;/*角を丸くする*/
+  color: #696969;   /*文字の色を変える*/
+  background-color: white;
+}
+
+.kaminari{
+  font-size: 20px;
+  text-align: center;
+}
+
 
 /* 文字関係 */
-
-.title_font{
-  font-size: 60px;
-  text-align: center;
-  padding-top: 160px;
-}
-
-.title{
-  font-size: 35px;
-}
-
-.font{
-  color: black;
-  font-size: 30px;
-  padding-top: 20px;
-}
-
-.font2{
-  color: black;
-  font-size: 20px;
-  padding-top: 5px;
-}
-
-.font3{
-  color: black;
-  font-size: 15px;
-  padding-top: 20px;
-}
-
-.font-center{
-  text-align: center;
-}
 
 .border{
   border-bottom: solid 3px #ffffff;
@@ -193,24 +196,298 @@ button, input, optgroup, select, textarea {
   padding: 15px;
 }
 
-#nav-font{
+.nav-font{
   color: #ffffff;
+  font-size: 15px;
+}
+
+/* フッター */
+.footer{
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 170px;
+  text-align: center;
+}
+
+.footer-font{
+  padding-top:5px;
+  color:white;
+}
+
+/* トップページ */
+.top-title{
+  height: 500px;
+}
+
+.top-notices-background{
+  background: rgba(0, 0, 0, 0.3);
+  height: 450px;
+  padding: 10px;
+}
+
+.top-notice-font{
+  text-align: center;
+}
+
+.top-notice-font2{
+  color:white;
+  font-size: 20px;
+}
+
+a.top-notice-link{
+  color:#fff;
+  text-align: center;
+}
+
+a.top-notice-link2{
+  color: white;
+  font-size: 20px;
+}
+
+.top-menus-image1{
+  background-image: url("image2.jpg");
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+.top-menus-image2{
+  background-image: url("image4.jpg");
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+.top-menus-image3{
+  background-image: url("image3.jpg");
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+.top-menus-image4{
+  background-image: url("image7.jpg");
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.top-menus-image5{
+  background-color: rgba(0,0,0,0.6);
+
+}
+
+a.top-menu-links{
+  text-decoration: none;
+}
+
+.top-menus-font{
+  text-align: center;
+  font-size: 30px;
+  line-height: 250px;
+  color:white;
+}
+
+.top-store-font{
+  text-align: center;
+}
+
+.top-store-font2{
+  text-align: center;
+  font-size: 20px;
+}
+.top-store_title{
+  background-image: url("image8.jpg");
+  background-size: 100% 100%;
+  height: 400px;
+  border-radius: 30px;
+}
+
+#back img {
+  width: 40px;
+}
+
+/* HP 管理者側　お知らせ */
+
+a.notice-font{
+  font-size:30px;
+  color:gray;
+}
+
+.notice-font2{
+  font-size:20px;
+  color:black;
+}
+
+.notice-font3{
+  text-align: center;
+  padding-top: 20px;
+}
+
+.notice-font4{
+  text-align: center;
+  color:gray;
+}
+
+.notice-font5{
+  width:500px;
+  word-wrap:break-word;
+}
+
+a.notice-link{
+  color: #696969;
+}
+
+.notice-link2{
+  text-align: right;
+  padding: 20px 0;
+}
+
+.notice-link3{
+  text-align: left;
+  padding: 20px 0;
+}
+
+a.notice-link4{
+  color: #696969;
+  font-size:20px;
 }
 
 
+.notice-table-border{
+  border: 0px none;
+}
+
+.table > tbody > tr > td{
+  border-top: 0px none;
+}
+
+.notice-table-border2{
+  border: 0px none;
+  border-collapse: separate;
+}
+
+/* HP こだわり */
+
+.kodawari-title{
+  background-image: url("image9.jpg");
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+}
+
+.kodawari-title-font{
+  text-align: center;
+  color: white;
+  line-height: 400px;
+  font-size:50px;
+  margin: 0;
+}
+
+
+#box3 {
+  display: none;
+  width: 50%;
+  line-height: 400px;
+}
+#box4 {
+  display: none;
+  width: 50%;
+  line-height: 400px;
+}
+
+.kodawari-image{
+  background-image: url("image10.jpg");
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 1000px;
+}
+
+.kodawari-image2{
+  background-image: url("image11.jpg");
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 1000px;
+}
+
+.kodawari-logo{
+  padding-bottom: 5px;
+}
+
+
+.kodawari-font{
+padding:10px 20px 0 20px;
+}
+
+.kodawari-font2{
+padding:10px 20px 0 20px;
+color: #DA8E00;//非対応のブラウザでの文字色を設定
+background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);//背景色にグラデーションを指定degは文字の向きこの場合は斜め、0degはますっぐ横に,上からはtopになる
+-webkit-background-clip: text;//テキストでくり抜く
+-webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+}
+
+/* 管理者側 HP 予約 */
+
+.reservation-title{
+  text-align: center;
+}
+
+.reservation-table-border{
+  border: 0px none;
+  border-collapse: separate;
+  width: 100%;
+}
+
+.reservation-table-font{
+  font-size:20px;
+}
+
+.reservation_form{
+  text-align: center;
+}
+
+.reservation_form button{
+  float:left;
+  width:50%;
+}
+
+.background-image4{
+  background-image: url("background4.jpg");
+  height: 400px;
+}
+
 /* カレンダー */
+.fc-unthemed td{
+  border-color: black;
+}
+
+.fc-unthemed th{
+  border-color: black;
+}
+
 .fc-unthemed td.fc-today{
 	background: lime;
 }
 .selected-date{
 	background-color: lime;
 }
-.fc-sun{
-	background-color: red;
+
+.fc-past{
+  background-color: rgba(0,0,0,0.4);
 }
 
+.fc-sun{
+  background-color: red;
+}
 
-/* お品書き */
+/* HP お品書き */
 
 .menus-nav-item {
   list-style: none;
@@ -223,12 +500,36 @@ button, input, optgroup, select, textarea {
   color: black;
 }
 
-.menus_title{
+.menus-title-image{
   background-image: url("image1.jpg");
   width: 100%;
   height: 400px;
   background-size: cover;
   background-position: center;
+}
+
+.menus-title-font{
+  text-align: center;
+  color: white;
+  line-height: 400px;
+  font-size:50px;
+  margin: 0;
+}
+
+.menus-title{
+  color: white;
+}
+
+.menus-font{
+  padding:20px 20px 0 20px;
+}
+
+.menus-font2{
+  padding:10px 20px 0 20px;
+}
+
+.menus-font3{
+  padding:20px 0 10px 0;
 }
 
 .menus-logo{
@@ -260,8 +561,32 @@ button, input, optgroup, select, textarea {
 
 /* 店舗案内 */
 
-.store_title{
+.store-title{
   background-image: url("image8.jpg");
   background-size: 100% 100%;
   height: 400px;
 }
+
+.store-title-font{
+  text-align: center;
+  color: white;
+  line-height: 400px;
+  font-size:50px;
+  margin: 0;
+}
+
+.store-font{
+  padding:10px 0;
+}
+
+/* 管理者　ログイン画面 */
+.background-image3{
+  background-image: url("background4.jpg");
+  height: 500px;
+}
+
+.logn_in-font{
+  padding:5px 0;
+}
+
+

@@ -1,7 +1,7 @@
 class NoticesController < ApplicationController
 
 	def index
-		@notices = Notice.page(params[:page]).per(3)
+		@notices = Notice.order(created_at: :desc).page(params[:page]).per(4)
 	end
 
 	def show

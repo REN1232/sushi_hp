@@ -1,4 +1,7 @@
 class Admin::NoticesController < ApplicationController
+
+	before_action :authenticate_admin!
+
 	def index
 		@notices = Notice.order(created_at: :desc).page(params[:page]).per(8)
 	end
@@ -12,7 +15,7 @@ class Admin::NoticesController < ApplicationController
 		if @notice.save #入力されたデータをdbに保存する。
 	      redirect_to admin_notices_path
 	    else
-	      render 'index'
+	      render 'new'
 	    end
 	end
 

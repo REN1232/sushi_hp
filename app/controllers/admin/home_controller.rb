@@ -1,12 +1,12 @@
 class Admin::HomeController < ApplicationController
-
+	before_action :authenticate_admin!
 	def top
 	end
 
 	def about
 	end
 
-	def shop
+	def kodawari
 	end
 
 	def menus
