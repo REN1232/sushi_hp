@@ -95,6 +95,10 @@ button, input, optgroup, select, textarea {
   border-bottom: solid 3px #ffffff;
 }
 
+.border2{
+  border-bottom: solid 2px black;
+}
+
 /* ヘッダー */
 
 .flex{
@@ -196,6 +200,11 @@ button, input, optgroup, select, textarea {
   padding: 15px;
 }
 
+.nav-item2{
+  text-align: center;
+  padding-top: 350px;
+}
+
 .nav-font{
   color: #ffffff;
   font-size: 15px;
@@ -215,6 +224,25 @@ button, input, optgroup, select, textarea {
 }
 
 /* トップページ */
+.top-start{
+  background-size: cover;
+  position: relative;
+  height:100%;
+}
+
+.top-start:before{
+  content:url("sushi.png");
+  text-align: center;
+  line-height: 750px;
+  position: absolute;
+  background-color: rgba(0,0,0,0.9);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index:1000;
+}
+
 .top-title{
   height: 500px;
 }
@@ -308,7 +336,7 @@ a.top-menu-links{
   width: 40px;
 }
 
-/* HP 管理者側　お知らせ */
+/* HP 管理者側 お知らせ */
 
 a.notice-font{
   font-size:30px;
@@ -331,7 +359,7 @@ a.notice-font{
 }
 
 .notice-font5{
-  width:500px;
+  width:100%;
   word-wrap:break-word;
 }
 
@@ -354,9 +382,10 @@ a.notice-link4{
   font-size:20px;
 }
 
-
-.notice-table-border{
+.notice-table{
   border: 0px none;
+  table-layout:fixed;
+  width:100%;
 }
 
 .table > tbody > tr > td{
@@ -366,6 +395,7 @@ a.notice-link4{
 .notice-table-border2{
   border: 0px none;
   border-collapse: separate;
+  font-size:20px;
 }
 
 /* HP こだわり */
@@ -439,6 +469,11 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
   text-align: center;
 }
 
+.reservation-font{
+  text-align: center;
+  line-height: 200px;
+}
+
 .reservation-table-border{
   border: 0px none;
   border-collapse: separate;
@@ -462,6 +497,18 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
   background-image: url("background4.jpg");
   height: 400px;
 }
+
+.reservation-table{
+  font-size:20px;
+  table-layout:fixed;
+  width:100%;
+}
+
+.reservation-request{
+  word-wrap:break-word;
+}
+
+
 
 /* カレンダー */
 .fc-unthemed td{
@@ -579,7 +626,7 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
   padding:10px 0;
 }
 
-/* 管理者　ログイン画面 */
+/* 管理者 ログイン画面 */
 .background-image3{
   background-image: url("background4.jpg");
   height: 500px;
@@ -589,4 +636,53 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
   padding:5px 0;
 }
 
+/* アバウトページ */
 
+.box1{
+  background-color:white;
+  width: 300px;
+  height:350px;
+  border-radius: 20px;
+  margin-left: 5px;
+  float:left;
+}
+
+.box2{
+  background-color:white;
+  width: 300px;
+  height:350px;
+  border-radius: 20px;
+  margin: 0 10px;
+  float:left;
+}
+.box3{
+  background-color:white;
+  width: 300px;
+  height:350px;
+  border-radius: 20px;
+  float:left;
+}
+
+.box4{
+  background-color:white;
+  width: 100%;
+  height:350px;
+  border-radius: 20px;
+}
+
+.about-text{
+ text-align:left;
+ padding: 30px 0;
+ }
+
+.about-font{
+ padding:5px;
+ }
+
+.about-font2{
+ padding-top:10px;
+ }
+
+.about-font3{
+ padding-top:20px;
+ }
