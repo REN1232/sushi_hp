@@ -16,6 +16,9 @@
 		            </font>
 		          </div>
 		        <% end %>
+		        <div>
+			      	<h4 id="alert" style="color:red;"><%= alert %></h4>
+			    </div>
   				<h4>予約日<span class="label label-warning pull-right">必須</span></h4>
   				<%= f.text_field :reservation_day, id: "reservation_day", readonly: true,placeholder: 'カレンダーの日付をタップしてください',style: "width:100%;" %>
 
@@ -26,13 +29,13 @@
 	  			<%= f.select :people, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8], ["9", 9], ["10", 10]] ,class:"form-control" %>
 
 	  			<h4>名前<span class="label label-warning pull-right">必須</span></h4>
-	  			<%= f.text_field :customer_name,style: "width:100%"%>
+	  			<%= f.text_field :customer_name,style: "width:100%",placeholder: '20文字以内で入力'%>
 
 	  			<h4>電話番号<span class="label label-warning pull-right">必須</span></h4>
-	  			<%= f.text_field :phone_number,style: "width:100%"%>
+	  			<%= f.text_field :phone_number,style: "width:100%",placeholder: '10〜11桁の数字のみ入力' %>
 
 	  			<h4>メールアドレス<span class="label label-warning pull-right">必須</span></h4>
-	  			<%= f.text_field :email,style: "width:100%"%>
+	  			<%= f.text_field :email,style: "width:100%",placeholder: '途中に@と.を必ず入れて入力'%>
 
 	  			<h4>ご要望</h4>
 	  			<%= f.text_area :request,style: "width:100%",rows:"5"%>
@@ -42,15 +45,13 @@
 		              <%= f.submit "編集完了", class: "btn btn-warning" %>
 		            </div>
 		            <div class="btn-group">
-		              <%= link_to admin_reservation_path(@reservation.id) do %>
+		              <%= link_to admin_reservation_path(@reservation.id),method: :get do %>
 		                <button class="btn btn-success">詳細に戻る</button>
 		              <% end %>
 		            </div>
-		          </div>
-		  		<% end %>
-  			</div>
-		      <p id="alert"><%= alert %></p>
-		    </div>
+		        </div>
+		  	<% end %>
+		  	</div>
 	    <div class="col-xs-4"></div>
 	</div>
 </div>

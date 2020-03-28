@@ -3,35 +3,35 @@
 	    <h2 class="reservation-title"><span class="border">予約詳細</span></h2>
 	    <div class="col-xs-4"></div>
 	      	<div class="col-xs-4"style="padding-bottom:20px;">
-		        <table class="table"style="font-size:20px;">
+		        <table class="table reservation-table">
 					<tbody>
 						<tr>
-							<th class="line">予約日時</th>
-							<td class="line"><%= @reservation.reservation_day.strftime("%Y/%m/%d") %></td>
+							<th width="40%">予約日時</th>
+							<td width="60%"><%= @reservation.reservation_day.strftime("%Y/%m/%d") %></td>
 						</tr>
 						<tr>
-							<th class="line">予約時間</th>
-							<td class="line"><%= @reservation.reservation_time %></td>
+							<th>予約時間</th>
+							<td><%= @reservation.reservation_time %></td>
 						</tr>
 						<tr>
-							<th class="line">予約人数</th>
-							<td class="line"><%= @reservation.people %>人</td>
+							<th>予約人数</th>
+							<td><%= @reservation.people %>人</td>
 						</tr>
 						<tr>
-							<th class="line">名前</th>
-							<td class="line"><%= @reservation.customer_name + "様" %></td>
+							<th>名前</th>
+							<td><%= @reservation.customer_name + "様" %></td>
 						</tr>
 						<tr>
-							<th class="line">電話番号</th>
-							<td class="line"><%= @reservation.phone_number %></td>
+							<th>電話番号</th>
+							<td><%= @reservation.phone_number %></td>
 						</tr>
 						<tr>
-							<th class="line">メールアドレス</th>
-							<td class="line"><%= @reservation.email %></td>
+							<th>メールアドレス</th>
+							<td><%= @reservation.email %></td>
 						</tr>
 						<tr>
-							<th class="line">ご要望</th>
-							<td class="line"><%= @reservation.request %></td>
+							<th>ご要望</th>
+							<td class="reservation-request"><%= @reservation.request %></td>
 						</tr>
 					</tbody>
 				</table>
