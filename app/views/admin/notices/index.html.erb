@@ -21,8 +21,8 @@
             <tbody>
               <% @notices.each do |notice| %>
               <tr>
-                <td><h4><%= notice.created_at.strftime("%Y/%m/%d") %></h4></td>
-                <td><h4><%= notice.title.truncate(20) %></h4></td>
+                <td><%= notice.created_at.strftime("%Y/%m/%d") %></td>
+                <td><%= notice.title.truncate(20) %></td>
                 <td>
                   <%= link_to admin_notice_path(notice.id) do %>
                     <button class="btn btn-success">詳細</button>
