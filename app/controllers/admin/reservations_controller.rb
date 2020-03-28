@@ -43,6 +43,10 @@ class Admin::ReservationsController < ApplicationController
 	    #本日の予約　件数バッジ
 	    @reservations_today_badge = Reservation.where(reservation_day: Date.today).order(:reservation_time)
 	    @reservation_today_badge = @reservations_today_badge.count
+
+	    #予約全部　件数バッジ
+	    @reservations_all_badge = Reservation.where.not("reservation_day < ?", Date.today).order(:reservation_day)
+	    @reservation_all_badge = @reservations_all_badge.count
 	end
 
 	def new
@@ -100,10 +104,32 @@ class Admin::ReservationsController < ApplicationController
 
 	def update
 		@reservation = Reservation.find(params[:id])
-		if @reservation.update(reservation_params)
-			redirect_to admin_reservation_path(@reservation.id)
+		#予約人数確認
+		reservations = Reservation.where(reservation_day: @reservation.reservation_day).where(reservation_time: @reservation.reservation_time)
+		a = 0
+		reservations.each do |reservation|
+			a += reservation.people.to_i
+		end
+		a -= @reservation.people.to_i
+		#合計10人以下
+		if a + reservation_params[:people].to_i <= 10
+
+			if @reservation.update(reservation_params)
+				redirect_to admin_reservation_path(@reservation.id)
+			else
+				@reservation = Reservation.find(params[:id])
+				render 'edit'
+			end
 		else
-			render 'edit'
+			if 10 - a < 1
+				flash.now[:alert] = "ご希望の日時ですとご予約は満席となります！"
+				@reservation = Reservation.find(params[:id])
+				render 'edit'
+			else
+				flash.now[:alert] = "ご希望の日時ですと予約可能人数は#{10-a}名までとなります！"
+				@reservation = Reservation.find(params[:id])
+				render 'edit'
+			end
 		end
 	end
 
