@@ -28,16 +28,16 @@
 
 	<h5>*日時と時間帯で予約可能人数が絞られます。</h5>
 
-	<%= f.select :people,@peoples, id: "people" %>
+	<%= f.select :people,@peoples, id: "people",placeholder: '20文字以内で入力' %>
 
 	<h4>名前<span class="label label-warning pull-right">必須</span></h4>
 	<%= f.text_field :customer_name,style: "width:100%"%>
 
 	<h4>電話番号<span class="label label-warning pull-right">必須</span></h4>
-	<%= f.text_field :phone_number,style: "width:100%"%>
+	<%= f.text_field :phone_number,style: "width:100%",placeholder: '10〜11桁の数字のみ入力'%>
 
 	<h4>メールアドレス<span class="label label-warning pull-right">必須</span></h4>
-	<%= f.text_field :email,style: "width:100%"%>
+	<%= f.text_field :email,style: "width:100%",placeholder: '途中に@と.を必ず入れて入力'%>
 
 	<h4>ご要望</h4>
 	<%= f.text_area :request,style: "width:100%",rows:"5"%>
