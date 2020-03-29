@@ -24,25 +24,25 @@
 		          	<% end %>
 		        </div>
 	        </div>
-	        <div class="row">
-		        <div class="col-xs-8">
-		        	<h3>検索機能</h3>
-		          	<%= form_tag(admin_reservations_path,:method => 'get') do %>
-				        <div class="form-group">
-				        	<!-- *text_field_tag(要素名 [, 値, オプション]) -->
-				            <%= text_field_tag :search_date, @search_day, id: "reservation_day",readonly: true,placeholder: 'カレンダーの日付をタップしてください', style: "width:250px; height:30px;" %>
-				            <%= select_tag :reservation_type,options_for_select([["1日", ""],["ランチ", "lunch"],["ディナー","dinner"]], selected: @search_time)%>
-				            <button type="submit" class="btn btn-default">検索する</button>
-				        </div>
-			        <% end %>
-			    </div>
-			    <div class="col-xs-4"style="padding-top: 55px;">
-			        <%= link_to new_admin_reservation_path do %>
-		            	<button class="btn btn-primary pull-right"style="width: 200px;">予約追加</button>
-		          	<% end %>
+        	<h3 style="margin:15px 0;">検索機能</h3>
+          	<%= form_tag(admin_reservations_path,:method => 'get') do %>
+		        <div class="col-xs-5"style="padding:0;">
+		        	<!-- *text_field_tag(要素名 [, 値, オプション]) -->
+		            <%= text_field_tag :search_date, @search_day, id: "reservation_day",readonly: true,placeholder: 'カレンダーの日付をタップしてください', class:"reservation-from" %>
 		        </div>
-		    </div>
-	  		<table class="table reservation-table-border">
+		        <div class="col-xs-2"style="padding:0;">
+		            <%= select_tag :reservation_type,options_for_select([["1日", ""],["ランチ", "lunch"],["ディナー","dinner"]], selected: @search_time),class:"reservation-from"%>
+		        </div>
+		        <div class="col-xs-2"style="padding:0;">
+		            <button type="submit" class="btn btn-default reservation-from">検索する</button>
+		        </div>
+	        <% end %>
+	        <div class="col-xs-3"style="padding:0;">
+		        <%= link_to new_admin_reservation_path do %>
+	            	<button class="btn btn-primary pull-right reservation-from">予約追加</button>
+	          	<% end %>
+	        </div>
+	  		<table class="table reservation-table-border"style="padding-top:10px;">
 	  			<thead>
 					<tr class="active">
 						<th>予約日</th>
@@ -80,11 +80,10 @@
 	              <% end %>
 	            </tbody>
 	        </table>
-	        <h4 id="alert"><%= alert %></h4>
+        	<h4 id="alert"><%= alert %></h4>
 	        <div  class="kaminari">
 	            <%= paginate @reservations %>
 	        </div>
-	    </div>
 	    <div class="col-xs-1"></div>
 	</div>
 </div>
