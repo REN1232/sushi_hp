@@ -1,0 +1,35 @@
+<div class="container-fluid background-image2">
+  <div class="row">
+    <h2 style="text-align: center;"><span class ="border">お知らせ</span></h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-3"></div>
+      <div class="col-xs-6"style="padding-top: 20px">
+        <table class="table notice-table">
+          <tbody>
+            <% @notices.each do |notice| %>
+            <tr>
+              <td width="30%">
+                <a><%= attachment_image_tag notice, :image, :fill,150,150, fallback: "no_image.jpg", size:'200x200' %></a>
+              </td>
+              <td width="60%">
+                <p class="notice-font2"><%= notice.created_at.strftime("%Y/%m/%d") %>
+                <%= link_to notice_path(notice.id), class: "notice-font" do %>
+                  <%= "◆" + notice.title.truncate(20)%>
+                <% end %>
+                </p>
+                <h3 class="notice-font5">
+                  <%= notice.content.truncate(80) %>
+                </h3>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div  class="kaminari">
+          <%= paginate @notices %>
+        </div>
+      </div>
+    <div class="col-xs-3"></div>
+  </div>
+</div>
