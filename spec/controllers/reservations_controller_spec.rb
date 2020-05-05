@@ -55,23 +55,23 @@ RSpec.describe ReservationsController, type: :controller do
 
     context 'パラメータが不正な場合' do
       it 'リクエストが成功すること' do
-        post :create, params: { reservation: FactoryBot.attributes_for(:reservation,phone_number:"000000000000000") }
+        post :create, params: { reservation: FactoryBot.attributes_for(:reservation,:invalid) }
         expect(response.status).to eq 200
       end
 
       it '予約が登録されないこと' do
         expect do
-          post :create, params: { reservation: FactoryBot.attributes_for(:reservation, phone_number:"000000000000000") }
+          post :create, params: { reservation: FactoryBot.attributes_for(:reservation,:invalid) }
         end.to_not change(Reservation, :count)
       end
 
       it 'newテンプレートで表示されること' do
-        post :create, params: { reservation: FactoryBot.attributes_for(:reservation, phone_number:"000000000000000") }
+        post :create, params: { reservation: FactoryBot.attributes_for(:reservation,:invalid) }
         expect(response).to render_template :new
       end
 
       it 'エラーが表示されること' do
-        post :create, params: { reservation: FactoryBot.attributes_for(:reservation, phone_number:"000000000000000") }
+        post :create, params: { reservation: FactoryBot.attributes_for(:reservation,:invalid) }
         expect(assigns(:reservation).errors.any?).to be_truthy
       end
     end
