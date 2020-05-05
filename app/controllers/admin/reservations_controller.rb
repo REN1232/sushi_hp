@@ -117,17 +117,14 @@ class Admin::ReservationsController < ApplicationController
 			if @reservation.update(reservation_params)
 				redirect_to admin_reservation_path(@reservation.id)
 			else
-				@reservation = Reservation.find(params[:id])
 				render 'edit'
 			end
 		else
 			if 10 - a < 1
 				flash.now[:alert] = "ご希望の日時ですとご予約は満席となります！"
-				@reservation = Reservation.find(params[:id])
 				render 'edit'
 			else
 				flash.now[:alert] = "ご希望の日時ですと予約可能人数は#{10-a}名までとなります！"
-				@reservation = Reservation.find(params[:id])
 				render 'edit'
 			end
 		end
