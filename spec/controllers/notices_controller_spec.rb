@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe NoticesController, type: :controller do
   describe 'お知らせ一覧ページ' do
     context "お知らせ一覧ページが正しく表示される" do
+      let(:notices) { create_list :notice, 2 }
       before do
         get :index
       end
@@ -10,7 +11,7 @@ RSpec.describe NoticesController, type: :controller do
         expect(response.status).to eq 200
       end
       it 'assigns index @notices' do
-        expect(assigns(:notice)).to eq @notices
+        expect(assigns(:notices)).to match_array notices
       end
       it 'indexテンプレートで表示されること' do
         expect(response).to render_template :index
