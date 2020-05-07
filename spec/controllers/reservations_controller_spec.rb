@@ -84,13 +84,13 @@ RSpec.describe ReservationsController, type: :controller do
       expect(response.status).to eq 302
     end
 
-    it 'ユーザーが削除されること' do
+    it '予約が削除されること' do
       expect do
         delete :destroy, params: { id: reservation }
       end.to change(Reservation, :count).by(-1)
     end
 
-    it 'ユーザー一覧にリダイレクトすること' do
+    it '予約一覧にリダイレクトすること' do
       delete :destroy, params: { id: reservation }
       expect(response).to redirect_to(delete_url)
     end
