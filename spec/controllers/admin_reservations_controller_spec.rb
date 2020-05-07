@@ -93,23 +93,23 @@ RSpec.describe Admin::ReservationsController, type: :controller do
 
     context 'パラメータが不正な場合' do
       it 'リクエストが成功すること' do
-        post :create, params: { reservation: FactoryBot.attributes_for(:reservation,phone_number:"000000000000000") }
+        post :create, params: { reservation: FactoryBot.attributes_for(:reservation,:invalid) }
         expect(response.status).to eq 200
       end
 
       it '予約が登録されないこと' do
         expect do
-          post :create, params: { reservation: FactoryBot.attributes_for(:reservation, phone_number:"000000000000000") }
+          post :create, params: { reservation: FactoryBot.attributes_for(:reservation, :invalid) }
         end.to_not change(Reservation, :count)
       end
 
       it 'newテンプレートで表示されること' do
-        post :create, params: { reservation: FactoryBot.attributes_for(:reservation, phone_number:"000000000000000") }
+        post :create, params: { reservation: FactoryBot.attributes_for(:reservation, :invalid) }
         expect(response).to render_template :new
       end
 
       it 'エラーが表示されること' do
-        post :create, params: { reservation: FactoryBot.attributes_for(:reservation, phone_number:"000000000000000") }
+        post :create, params: { reservation: FactoryBot.attributes_for(:reservation, :invalid) }
         expect(assigns(:reservation).errors.any?).to be_truthy
       end
     end
@@ -122,13 +122,13 @@ RSpec.describe Admin::ReservationsController, type: :controller do
       expect(response.status).to eq 302
     end
 
-    it 'ユーザーが削除されること' do
+    it '予約が削除されること' do
       expect do
         delete :destroy, params: { id: reservation }
       end.to change(Reservation, :count).by(-1)
     end
 
-    it 'ユーザー一覧にリダイレクトすること' do
+    it '予約一覧にリダイレクトすること' do
       delete :destroy, params: { id: reservation }
       expect(response).to redirect_to(admin_reservations_path)
     end
@@ -147,7 +147,7 @@ RSpec.describe Admin::ReservationsController, type: :controller do
       end.to change(Reservation, :count).by(0)
     end
 
-    it 'ユーザー名が更新されること' do
+    it '名前が更新されること' do
       patch :update, params: { id: reservation.id, reservation: update_reservations }, session: {}
       reservation.reload
       expect(reservation.customer_name).to eq update_reservations[:customer_name]
@@ -164,7 +164,7 @@ RSpec.describe Admin::ReservationsController, type: :controller do
         expect(response.status).to eq 200
       end
 
-      it 'ユーザー名が変更されないこと' do
+      it '名前が変更されないこと' do
         expect do
         put :update, params: { id: reservation.id, reservation: FactoryBot.attributes_for(:reservation,:invalid) }
         end.to_not change(Reservation.find(reservation.id), :customer_name)
