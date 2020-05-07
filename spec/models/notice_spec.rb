@@ -3,9 +3,7 @@ require 'rails_helper'
 RSpec.describe Notice, type: :model do
     context "データが正しく保存される" do
         before do
-            @notice = Notice.new
-            @notice.title = "営業時間の変更"
-            @notice.content = "5月20日は21:00までの営業になります。"
+            @notice = FactoryBot.create(:notice)
             @notice.save
         end
         it "全て入力してあるので保存される" do
@@ -14,9 +12,8 @@ RSpec.describe Notice, type: :model do
     end
     context "タイトルが空欄でないこと" do
         before do
-            @notice = Notice.new
+            @notice = FactoryBot.create(:notice)
             @notice.title = ""
-            @notice.content = "5月20日は21:00までの営業になります。"
             @notice.save
         end
         it "タイトルが入力されていないので保存されない" do
@@ -26,8 +23,7 @@ RSpec.describe Notice, type: :model do
     end
     context "内容が201文字以内であること" do
         before do
-            @notice = Notice.new
-            @notice.title = "営業時間の変更"
+            @notice = FactoryBot.create(:notice)
             @notice.content = "5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。5月20日は21:00までの営業になります。"
             @notice.save
         end
