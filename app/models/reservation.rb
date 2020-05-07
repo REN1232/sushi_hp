@@ -1,7 +1,7 @@
 class Reservation < ApplicationRecord
 
 	validates :customer_name, presence: true,length: {maximum: 20}
-	validates :people, presence: true,length: { minimum: 0, maximum: 10}
+	validates :people, presence: true
 	validates :reservation_time, presence: true
 	validates :reservation_day, presence: true
 	validates :phone_number, presence: true,length: { minimum: 10, maximum: 11 }
