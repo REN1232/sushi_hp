@@ -9,7 +9,7 @@ RSpec.describe HomeController, type: :controller do
       it 'リクエストは200 OKとなること' do
         expect(response.status).to eq 200
       end
-      it 'indexテンプレートで表示されること' do
+      it 'aboutテンプレートで表示されること' do
         expect(response).to render_template :about
       end
     end
