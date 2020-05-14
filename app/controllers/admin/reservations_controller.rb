@@ -2,23 +2,16 @@ class Admin::ReservationsController < ApplicationController
 
 	before_action :authenticate_admin!
 
+	before_action :set_reservation, only: [:new,:create]
+	before_action :find_reservation, only: [:show,:edit,:destroy,:update]
+
 	def index
 		if params[:link] == "new"
 			#新着予約
 	    	@reservations = Reservation.where(created_at: Time.now.all_day).order(:reservation_day).page(params[:page]).per(10)
-	    	@reservation = @reservations.count
-	    	if @reservation == 0
-	    		flash.now[:alert] = "予約はありません！"
-			else
-			end
 	    elsif params[:link] == "today"
 	    	#本日の予約
 	       	@reservations = Reservation.where(reservation_day: Date.today).order(:reservation_time).page(params[:page]).per(10)
-	       	@reservation = @reservations.count
-	    	if @reservation == 0
-	    		flash.now[:alert] = "予約はありません！"
-			else
-			end
 	    else
 	    	#過去の予約を非表示
 	    	@reservations = Reservation.where.not("reservation_day < ?", Date.today).order(:reservation_day)
@@ -28,15 +21,15 @@ class Admin::ReservationsController < ApplicationController
 	    	@reservations = @reservations.dinner if params[:reservation_type] == 'dinner'
 	    	#並びかえ
 			@reservations = @reservations.order(:reservation_time).page(params[:page]).per(10)
-			@reservation = @reservations.count
-	    	if @reservation == 0
-	    		flash.now[:alert] = "予約はありません！"
-			else
-			end
 			#検索後の表示指定
 			@search_time = params[:reservation_type]
 			@search_day = params[:search_date]
 	    end
+	    #予約0件時のアラート
+	    @reservation = @reservations.count
+    	if @reservation == 0
+    		flash.now[:alert] = "予約はありません！"
+		end
 	    #新着予約　件数バッジ
 	    @reservations_new_badge = Reservation.where(created_at: Time.now.all_day).order(:reservation_day)
 	    @reservation_new_badge = @reservations_new_badge.count
@@ -51,16 +44,12 @@ class Admin::ReservationsController < ApplicationController
 
 	def new
 		@reservation = Reservation.new
-		@peoples = Reservation.people.keys
-		@reservation_times = Reservation.reservation_times.keys
 	end
 
 	def show
-		@reservation = Reservation.find(params[:id])
 	end
 
 	def edit
-		@reservation = Reservation.find(params[:id])
 	end
 
 	def create
@@ -77,33 +66,25 @@ class Admin::ReservationsController < ApplicationController
 			if @reservation.save
 				redirect_to admin_reservation_path(@reservation.id)
 			else
-				@peoples = Reservation.people.keys
-				@reservation_times = Reservation.reservation_times.keys
 				render 'new'
 			end
 		else
 			if 10 - a < 1
 				flash.now[:alert] = "ご希望の日時ですとご予約は満席となります！"
-				@peoples = Reservation.people.keys
-				@reservation_times = Reservation.reservation_times.keys
 				render 'new'
 			else
 				flash.now[:alert] = "ご希望の日時ですと予約可能人数は#{10-a}名までとなります！"
-				@peoples = Reservation.people.keys
-				@reservation_times = Reservation.reservation_times.keys
 				render 'new'
 			end
 		end
 	end
 
 	def destroy
-		@reservation = Reservation.find(params[:id])
 	    @reservation.destroy
 	    redirect_to admin_reservations_path
 	end
 
 	def update
-		@reservation = Reservation.find(params[:id])
 		#予約人数確認
 		reservations = Reservation.where(reservation_day: @reservation.reservation_day).where(reservation_time: @reservation.reservation_time)
 		a = 0
@@ -259,5 +240,14 @@ class Admin::ReservationsController < ApplicationController
 
 	def reservation_params
 	    params.require(:reservation).permit(:customer_name,:people,:reservation_time,:reservation_day,:phone_number,:email,:request)
+	end
+
+	def set_reservation
+		@peoples = Reservation.people.keys
+		@reservation_times = Reservation.reservation_times.keys
+	end
+
+	def find_reservation
+		@reservation = Reservation.find(params[:id])
 	end
 end

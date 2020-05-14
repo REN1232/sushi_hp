@@ -1,17 +1,17 @@
 class ReservationsController < ApplicationController
 
+	before_action :set_reservation, only: [:new,:create,:confirm,:back]
+	before_action :new_reservation, only: [:create,:confirm,:back]
+	before_action :find_reservation, only: [:show,:destroy]
+
 	def new
 		@reservation = Reservation.new
-		@peoples = Reservation.people.keys
-		@reservation_times = Reservation.reservation_times.keys
 	end
 
 	def show
-		@reservation = Reservation.find(params[:id])
 	end
 
 	def create
-		@reservation = Reservation.new(reservation_params)
 		#予約人数確認
 		reservations = Reservation.where(reservation_day: @reservation.reservation_day).where(reservation_time: @reservation.reservation_time)
 		a = 0
@@ -22,33 +22,24 @@ class ReservationsController < ApplicationController
 		if a + @reservation.people.to_i <= 10
 
 			if params[:back]
-				@peoples = Reservation.people.keys
-				@reservation_times = Reservation.reservation_times.keys
 	      		render 'new'
 			elsif @reservation.save
 				redirect_to reservation_path(@reservation.id)
 			else
-				@peoples = Reservation.people.keys
-				@reservation_times = Reservation.reservation_times.keys
 				render 'new'
 			end
 		else
 			if 10 - a < 1
 				flash.now[:alert] = "ご希望の日時ですとご予約は満席となります！"
-				@peoples = Reservation.people.keys
-				@reservation_times = Reservation.reservation_times.keys
 				render 'new'
 			else
 				flash.now[:alert] = "ご希望の日時ですと予約可能人数は#{10-a}名までとなります！"
-				@peoples = Reservation.people.keys
-				@reservation_times = Reservation.reservation_times.keys
 				render 'new'
 			end
 		end
 	end
 
 	def destroy
-	    @reservation = Reservation.find(params[:id])
 	    @reservation.destroy
 	    redirect_to delete_path
 	end
@@ -57,16 +48,10 @@ class ReservationsController < ApplicationController
 	end
 
 	def confirm
-		@reservation = Reservation.new(reservation_params)
-		@peoples = Reservation.people.keys
-		@reservation_times = Reservation.reservation_times.keys
   		render "new" if @reservation.invalid?
 	end
 
 	def back
-		@reservation = Reservation.new(reservation_params)
-		@peoples = Reservation.people.keys
-		@reservation_times = Reservation.reservation_times.keys
     	render "new"
     end
 
@@ -199,5 +184,18 @@ class ReservationsController < ApplicationController
 
 	def reservation_params
 	    params.require(:reservation).permit(:customer_name,:people,:reservation_time,:reservation_day,:phone_number,:email,:request)
+	end
+
+	def set_reservation
+		@peoples = Reservation.people.keys
+		@reservation_times = Reservation.reservation_times.keys
+	end
+
+	def new_reservation
+		@reservation = Reservation.new(reservation_params)
+	end
+
+	def find_reservation
+		@reservation = Reservation.find(params[:id])
 	end
 end
