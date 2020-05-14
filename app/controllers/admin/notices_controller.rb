@@ -2,6 +2,8 @@ class Admin::NoticesController < ApplicationController
 
 	before_action :authenticate_admin!
 
+	before_action :find_notice, only: [:show,:edit,:destroy,:update]
+
 	def index
 		@notices = Notice.order(created_at: :desc).page(params[:page]).per(8)
 	end
@@ -20,15 +22,12 @@ class Admin::NoticesController < ApplicationController
 	end
 
 	def show
-		@notice = Notice.find(params[:id])
 	end
 
 	def edit
-		@notice = Notice.find(params[:id])
 	end
 
 	def update
-		@notice = Notice.find(params[:id])
 		if @notice.update(notice_params)
 			redirect_to admin_notice_path(@notice.id)
 		else
@@ -37,7 +36,6 @@ class Admin::NoticesController < ApplicationController
 	end
 
 	def destroy
-		@notice = Notice.find(params[:id])
 		@notice.destroy
     	redirect_to admin_notices_path
 	end
@@ -48,5 +46,7 @@ class Admin::NoticesController < ApplicationController
 	    params.require(:notice).permit(:image,:title,:content)
 	end
 
-
+	def find_notice
+		@notice = Notice.find(params[:id])
+	end
 end
