@@ -84,7 +84,7 @@ gem 'momentjs-rails'
 
 gem 'pry-byebug'
 
-gem 'kaminari','~> 1.1.1'
+gem 'kaminari','~> 1.2.1'
 
 gem 'rails-i18n'
 
