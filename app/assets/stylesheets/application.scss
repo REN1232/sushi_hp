@@ -417,6 +417,18 @@ a.notice-link4{
   font-size:20px;
 }
 
+.notice-resp{
+  width:30%;
+}
+
+.notice-resp2{
+  width:60%;
+}
+.notice-image-resp{
+  width: 200px;
+  height: 200px;
+}
+
 /* HP こだわり */
 
 .kodawari-title{
@@ -751,5 +763,24 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
 #nav-content {
   max-width: 200px;/*最大幅（調整してください）*/ 
   padding-top: 30px;
+}
+/* お知らせページ */
+.notice-resp{
+  display: block;
+  width:100%;
+}
+.notice-resp2{
+  display: block;
+  width:100%;
+}
+.notice-image-resp{
+  width: 100%;
+  height: auto;
+}
+.kaminari {
+  font-size: 15px;
+}
+.notice-font4 {
+  font-size: 30px;
 }
 }

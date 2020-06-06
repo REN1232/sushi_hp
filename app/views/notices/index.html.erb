@@ -3,16 +3,16 @@
     <h2 style="text-align: center;"><span class ="border">お知らせ</span></h2>
   </div>
   <div class="row">
-    <div class="col-xs-3"></div>
-      <div class="col-xs-6"style="padding-top: 20px">
+    <div class="col-xs-0 col-lg-3"></div>
+      <div class="col-xs-12 col-lg-6"style="padding-top: 20px">
         <table class="table notice-table">
           <tbody>
             <% @notices.each do |notice| %>
             <tr>
-              <td width="30%">
-                <a><%= attachment_image_tag notice, :image, :fill,150,150, fallback: "no_image.jpg", size:'200x200' %></a>
+              <td class="notice-resp">
+                <a><%= attachment_image_tag notice, :image, :fill,150,150, fallback: "no_image.jpg",class: "notice-image-resp" %></a>
               </td>
-              <td width="60%">
+              <td class="notice-resp2">
                 <p class="notice-font2"><%= notice.created_at.strftime("%Y/%m/%d") %>
                 <%= link_to notice_path(notice.id), class: "notice-font" do %>
                   <%= "◆" + notice.title.truncate(20)%>
@@ -30,6 +30,6 @@
           <%= paginate @notices %>
         </div>
       </div>
-    <div class="col-xs-3"></div>
+    <div class="col-xs-0 col-lg-3"></div>
   </div>
 </div>
