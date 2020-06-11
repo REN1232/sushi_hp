@@ -577,7 +577,7 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
 .menus-nav-item {
   list-style: none;
   display: inline-block;
-  margin: 0 30px;
+  margin: auto;
   font-size: 20px;
 }
 
@@ -617,17 +617,22 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
   padding:20px 0 10px 0;
 }
 
+.menus-font4{
+  padding:10px 20px 0 20px;
+}
+
 .menus-logo{
   padding-bottom: 5px;
 }
 
 .menus-image1{
   background-image: image-url("background3.jpg");
-  float: left;
   width: 50%;
   height: 500px;
   background-size: cover;
   background-position: center;
+  padding:0;
+  float: left;
 }
 
 .menus-image2{
@@ -643,6 +648,16 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
   height: 300px;
   border-radius: 35px;
 }
+
+.menus-image4{
+  background-image: image-url("background3.jpg");
+  width: 50%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  float: left;
+}
+
 
 /* 店舗案内 */
 
@@ -801,5 +816,45 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
 }
 .kodawari-resp{
   padding:0;
+}
+/* メニューページ */
+.menus-title-image {
+  height: 300px;
+}
+.menus-title-font {
+  line-height: 300px;
+}
+.menus-nav-item {
+  margin:inherit;
+  padding:0;
+}
+.menus-image1 {
+  height: 300px;
+}
+.menus-font {
+  padding: 15px 10px;
+  margin: 5px 10px;
+}
+.menus-font2 {
+  padding: 10px 10px;
+  margin: 5px 10px;
+}
+.menus-font3{
+  padding: 10px 10px;
+  margin: 5px 10px;
+}
+.menus-font4{
+  padding: 5px 10px;
+  margin: 5px 10px;
+}
+.menus-image1{
+  width: 100%;
+  height: 300px;
+}
+.menus-image4{
+  width: 100%;
+}
+.menus-image2{
+  height: 2800px;
 }
 }

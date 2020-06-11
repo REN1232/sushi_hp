@@ -5,10 +5,10 @@
 	    </div>
 	    <nav>
 			<ul class="nav-list">
-				<li class="menus-nav-item"><a href="#link1" id="menus-nav-font">おまかせコース</a></li>
-				<li class="menus-nav-item"><a href="#link2" id="menus-nav-font">握り寿司　巻物</a></li>
-	 			<li class="menus-nav-item"><a href="#link3" id="menus-nav-font">一品料理</a></li>
-	 			<li class="menus-nav-item"><a href="#link4" id="menus-nav-font">飲み物</a></li>
+				<li class="menus-nav-item col-xs-6 col-lg-3"><a href="#link1" id="menus-nav-font">おまかせコース</a></li>
+				<li class="menus-nav-item col-xs-6 col-lg-3"><a href="#link2" id="menus-nav-font">握り寿司　巻物</a></li>
+	 			<li class="menus-nav-item col-xs-6 col-lg-3"><a href="#link3" id="menus-nav-font">一品料理</a></li>
+	 			<li class="menus-nav-item col-xs-6 col-lg-3"><a href="#link4" id="menus-nav-font">飲み物</a></li>
 			</ul>
 		</nav>
     </div>
@@ -16,7 +16,7 @@
 		<h1 class="menus-title" id="link1"><%= image_tag 'logo.png',size:'40x40',class: 'menus-logo'%>おまかせコース</h1>
 		<div class="clearfix">
 			<%= image_tag 'image2.jpg',class: 'menus-image1'%>
-			<div class="menus-image1" style="text-align: center;">
+			<div class="menus-image4" style="text-align: center;">
 				<h1 class="menus-font"><span class="border">おまかせコース(特上)</span></h1>
 				<h1 class="menus-font2">20,000円(税別)</h1>
 				<h4 class="menus-font">先付、小鉢２品、刺身５種、焼き物、揚げ物、 蒸し物、鮨１０貫、お椀、デザート</h4>
@@ -27,7 +27,7 @@
 		</div>
 		 <h1 class="menus-title" id="link2"><%= image_tag 'logo.png',size:'40x40',class: 'menus-logo'%>握り寿司　巻物</h1>
 		<div class="clearfix">
-			<div class="menus-image1" style="text-align: center;">
+			<div class="menus-image4 " style="text-align: center;">
 				<h2 class="menus-font"><span class="border">握り寿司</span></h2>
 				<h3>松（まつ） 5,000円(税別)</h3>
 				<h3>竹（たけ） 3,000円(税別)</h3>
@@ -40,7 +40,7 @@
 		</div>
 		<h1 class="menus-title" id="link3"><%= image_tag 'logo.png',size:'40x40',class: 'menus-logo'%>一品料理</h1>
 		<div class="menus-image2" style="text-align: center;">
-			<div class="col-xs-6">
+			<div class="col-xs-12 col-lg-6">
 				<h2 class="menus-font3"><span class="border">一品料理</span></h2>
 				<h3>お新香盛合せ　　　　780円(税別)</h3>
 				<h3>寿司屋のサラダ　　1,100円(税別)</h3>
@@ -57,7 +57,7 @@
 				<h3>本日のデザート　　550円(税別)</h3>
 				<h3>アイスクリーム　　420円(税別)</h3>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-xs-12 col-lg-6">
 				<h2 class="menus-font3"><span class="border">お造り盛り合わせ</span></h2>
 				<%= image_tag 'image4.jpg',class: 'menus-image3'%>
 				<h3>旬のお造り盛合せ　　　　2,500円(税別)<br>(1名様用)</h3>
@@ -74,15 +74,15 @@
 		<h1 class="menus-title" id="link4"><%= image_tag 'logo.png',size:'40x40',class: 'menus-logo'%>飲み物</h1>
 		<div class="clearfix">
 			<%= image_tag 'image7.jpg',class: 'menus-image1'%>
-			<div class="menus-image1" style="text-align: center;">
-				<h2 class="menus-font2"><span class="border">日本酒</span></h2>
-				<h4 class="menus-font2">江戸開城、獺祭、船中八策、土佐鶴、日高見・弥助、八海山純米吟醸、大那、伯楽星、新政No,6、田酒、黒龍</h4>
-				<h2 class="menus-font2"><span class="border">焼酎</span></h2>
-				<h4 class="menus-font2">吉四六、二階堂、中々、百年の孤独、魔王、富乃宝山、森伊蔵、村尾、獺祭、八海山よろしく千萬</h4>
-				<h2 class="menus-font2"><span class="border">その他</span></h2>
-				<h4 class="menus-font2">キリン一番搾り、スーパードライ　ノンアルコールビール、ハイボール　梅酒サワー　緑茶ハイ　烏龍ハイ　 レモンサワー</h4>
-				<h2 class="menus-font2"><span class="border">ソフトドリンク</span></h2>
-				<h4 class="menus-font2">緑茶　烏龍茶　コーラ　オレンジジュース　炭酸水</h4>
+			<div class="menus-image4" style="text-align: center;">
+				<h2 class="menus-font4"><span class="border">日本酒</span></h2>
+				<h4 class="menus-font4">江戸開城、獺祭、船中八策、土佐鶴、日高見・弥助、八海山純米吟醸、大那、伯楽星、新政No,6、田酒、黒龍</h4>
+				<h2 class="menus-font4"><span class="border">焼酎</span></h2>
+				<h4 class="menus-font4">吉四六、二階堂、中々、百年の孤独、魔王、富乃宝山、森伊蔵、村尾、獺祭、八海山よろしく千萬</h4>
+				<h2 class="menus-font4"><span class="border">その他</span></h2>
+				<h4 class="menus-font4">キリン一番搾り、スーパードライ　ノンアルコールビール、ハイボール　梅酒サワー　緑茶ハイ　烏龍ハイ　 レモンサワー</h4>
+				<h2 class="menus-font4"><span class="border">ソフトドリンク</span></h2>
+				<h4 class="menus-font4">緑茶　烏龍茶　コーラ　オレンジジュース　炭酸水</h4>
 			</div>
 		</div>
 	</div>
