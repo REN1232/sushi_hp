@@ -447,7 +447,6 @@ a.notice-link4{
   margin: 0;
 }
 
-
 #box3 {
   display: none;
   width: 50%;
@@ -492,6 +491,10 @@ color: #DA8E00;//非対応のブラウザでの文字色を設定
 background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);//背景色にグラデーションを指定degは文字の向きこの場合は斜め、0degはますっぐ横に,上からはtopになる
 -webkit-background-clip: text;//テキストでくり抜く
 -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+}
+
+.kodawari-resp{
+  padding:20px 0;
 }
 
 /* 管理者側 HP 予約 */
@@ -761,7 +764,7 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
   padding-top:10px;
 }
 #nav-content {
-  max-width: 200px;/*最大幅（調整してください）*/ 
+  max-width: 200px;/*最大幅（調整してください）*/
   padding-top: 30px;
 }
 /* お知らせページ */
@@ -782,5 +785,21 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
 }
 .notice-font4 {
   font-size: 30px;
+}
+/* こだわりページ */
+.kodawari-image{
+  display:none;
+}
+.kodawari-image2{
+  display:none;
+}
+.kodawari-title{
+  height: 300px;
+}
+.kodawari-title-font{
+  line-height: 300px;
+}
+.kodawari-resp{
+  padding:0;
 }
 }
