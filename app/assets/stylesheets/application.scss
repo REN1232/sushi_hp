@@ -689,6 +689,12 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
   padding:5px 0;
 }
 
+.store-map{
+  width:100%;
+  height:400px;
+  margin:20px;
+}
+
 /* アバウトページ */
 
 .box1{
@@ -856,5 +862,19 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
 }
 .menus-image2{
   height: 2800px;
+}
+/* 店舗ページ */
+.store-resp{
+  text-align: center;
+}
+.store-map{
+  height:200px;
+  margin:none;
+}
+.store-title{
+  height: 250px;
+}
+.store-title-font{
+  line-height: 250px;
 }
 }
