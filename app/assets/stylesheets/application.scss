@@ -699,24 +699,27 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
 
 .box1{
   background-color:white;
-  width: 100%;
   height:350px;
   border-radius: 20px;
+  width:300px;
+  margin-right: 15px;
   float:left;
 }
 
 .box2{
   background-color:white;
-  width: 100%;
   height:350px;
   border-radius: 20px;
+  width:300px;
+  margin-right: 15px;
   float:left;
 }
+
 .box3{
   background-color:white;
-  width: 100%;
   height:350px;
   border-radius: 20px;
+  width:300px;
   float:left;
 }
 
@@ -742,6 +745,15 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
 
 .about-font3{
  padding-top:20px;
+ }
+
+.about-resp{
+ padding: 0 5px;
+ }
+
+.about-resp2{
+  width: 200px;
+  height: 150px;
  }
 
 @media (max-width: 480px){
@@ -876,5 +888,21 @@ background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, 
 }
 .store-title-font{
   line-height: 250px;
+}
+
+/* アバウトページ */
+.box1{
+  height:330px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.box2{
+  height:330px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.box3{
+  height:330px;
+  width: 100%;
 }
 }
