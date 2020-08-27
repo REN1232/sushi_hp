@@ -1,6 +1,6 @@
 ## sushi_hp
-http://tukijisushi.work/  
-リンクは停止しています
+http://http://13.230.33.144//  
+
 ![demo](https://github.com/KAGIREN/sushi_hp/wiki/images/tukijisushi.work_.png)
 
 ## 管理者ログイン
