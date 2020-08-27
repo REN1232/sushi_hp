@@ -1,5 +1,5 @@
 ## sushi_hp
-http://http://13.230.33.144//  
+http://13.230.33.144/  
 
 ![demo](https://github.com/KAGIREN/sushi_hp/wiki/images/tukijisushi.work_.png)
 
