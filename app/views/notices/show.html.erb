@@ -6,7 +6,7 @@
         <h3 style="text-align: center;"><%= @notice.created_at.strftime("%Y/%m/%d")%></h3>
         <h1 class="notice-font4"><%= @notice.title %></h1>
         <div class="col-xs-12 col-lg-5" style="text-align: right;">
-          <span><%= attachment_image_tag @notice, :image, :fill,150,150, fallback: "no_image.jpg", class: 'notice-image-resp'%></span>
+          <span><%= attachment_image_tag @notice, :image, size:'200x200', fallback: "no_image.jpg", class: 'notice-image-resp'%></span>
         </div>
         <div class="col-xs-12 col-lg-7">
           <h4 class="notice-font5"><%= @notice.content %></h4>

@@ -19,7 +19,7 @@
             <% @notices.each do |notice| %>
             <tr>
               <td width="30%">
-                <a><%= attachment_image_tag notice, :image, :fill,150,150, fallback: "no_image.jpg", size:'200x200' %></a>
+                <a><%= attachment_image_tag notice, :image, fallback: "no_image.jpg", size:'200x200' %></a>
               </td>
               <td width="60%">
                 <p class="notice-font2"><%= notice.created_at.strftime("%Y/%m/%d") %>
