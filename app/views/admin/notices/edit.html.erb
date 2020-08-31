@@ -20,7 +20,7 @@
           <div class="field row">
             <h4>　画像</h4>
             <% if @notice.image.present? %>
-              <%= image_tag @notice.image, id: :img_prev, size:'200x200' %>
+              <%= attachment_image_tag @notice, :image, id: :img_prev, size:'200x200' %>
             <% else %>
               <%= image_tag "no_image.jpg", id: :img_prev, size:'200x200' %>
             <% end %>
