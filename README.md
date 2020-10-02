@@ -78,7 +78,7 @@ password sushisushi
 
 ## インストール　
 ```
-$ git clone https://github.com/KAGIREN/sushi_hp
+$ git clone https://github.com/REN1232/sushi_hp
 $ cd sushi_hp
 $ bundle install
 $ rails db:migrate
