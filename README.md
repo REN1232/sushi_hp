@@ -85,6 +85,6 @@ $ rails db:migrate
 $ rails db:seed
 ```
 ## 作者
-[KAGIREN](https://github.com/KAGIREN)
+[REN1232](https://github.com/REN1232)
 
 
